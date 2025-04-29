@@ -1,0 +1,16 @@
+{
+    'name' : 'Air Import',
+    'version' : '1.0.0',
+    'author' : 'afzalhussainj',
+    'sequence' : -100,
+    'website' : 'www.instagram.com/afzalhussainj',
+    'category' : 'Logistic Management',
+    'summary' : 'For managing air imports in logistic',
+    'description' : 'For managing air imports in logistic',
+    'application' : True,
+    'lisence' : 'LGPL-3',
+    'depends': [],
+    'data': [],
+    'installable': True,
+    'auto_install': False,
+}
