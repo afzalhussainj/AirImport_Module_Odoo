@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <menuitem id="air_import_menu_root" name="Air Import" sequence="10"/>
+    <menuitem id="air_import_menu_bl" name="Bills" parent="air_import_menu_root" sequence="20" />
+    <menuitem id="air_import_menu_master_bl" name="Master Bill of Lading" parent="air_import_menu_bl" sequence="30" action='action_master_bl'/>
+</odoo>

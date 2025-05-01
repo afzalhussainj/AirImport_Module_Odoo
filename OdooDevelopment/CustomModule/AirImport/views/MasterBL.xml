@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Tree View Definition -->
+    <record id="view_master_bl_tree" model="ir.ui.view">
+        <field name="name">air.import.master.bl.tree</field>
+        <field name="model">air.import.master.bl</field>
+        <field name="arch" type="xml">
+            <list string="Master Bill of Lading" editable="bottom">
+                <field name="name"/>
+                <field name="bl_date"/>
+                <field name="foreign_agent"/>
+                <field name="flight_number"/>
+                <field name="department"/>
+                <field name="pieces"/>
+                <field name="weight"/>
+                <field name="pakages"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action to Open the Tree View -->
+    <record id="action_master_bl" model="ir.actions.act_window">
+        <field name="name">Master Bill of Lading</field>
+        <field name="res_model">air.import.master.bl</field>
+        <field name="view_mode">list</field>  <!-- Change 'tree' to 'list' -->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_smiling_face">Create your first Master Bill of Lading</p>
+            <p>Click to create a new Master Bill of Lading.</p>
+        </field>
+    </record>
+</odoo>

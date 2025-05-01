@@ -10,7 +10,16 @@
     'application' : True,
     'lisence' : 'LGPL-3',
     'depends': [],
-    'data': [],
+    'data': [
+        # 'views/view.xml',
+        'views/MasterBL.xml',
+        'views/menu.xml',
+        # 'views/air_import_master_bl_tree_view.xml',
+        # 'views/air_import_master_bl_form_view.xml',
+        # 'views/air_import_master_bl_search_view.xml',
+        # 'security/ir.model.access.csv',
+        # 'security/security.xml',
+    ],
     'installable': True,
     'auto_install': False,
 }
