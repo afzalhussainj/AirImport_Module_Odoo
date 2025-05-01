@@ -7,7 +7,7 @@ class MasterBL(models.Model):
 
     name = fields.Char(string='MAWB Number', required=True, copy=False, index=True)
     bl_date = fields.Date(string='BL Date', required=True)
-    foreign_agent = fields.Many2one('res.partner', string='Foreign Agent', required=True)
+    foreign_agent = fields.Many2one('air.import.foreign.agent', string='Foreign Agent', required=True)
     flight_number = fields.Char(string='Flight Number')
     department = fields.Char(string='Department')
     pieces = fields.Integer(string='Total Pieces')
