@@ -14,9 +14,58 @@
                 <field name="department"/>
                 <field name="pieces"/>
                 <field name="weight"/>
-                <field name="pakages"/>
+                <field name="packages"/>
                 <field name="status"/>
             </list>
+        </field>
+    </record>
+
+    <!-- Form View Definition -->
+    <record id="view_master_bl_form" model="ir.ui.view">
+        <field name="name">air.import.master.bl.form</field>
+        <field name="model">air.import.master.bl</field>
+        <field name="arch" type="xml">
+            <form string="Master Bill of Lading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="bl_date"/>
+                        </group>
+                        <group>
+                            <field name="foreign_agent"/>
+                            <field name="flight_number"/>
+                        </group>
+                        <group>
+                            <field name="pieces"/>
+                            <field name="weight"/>
+                            <field name="packages"/>
+                        </group>
+                        <group>
+                            <field name="department"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+
+                    <!-- HAWB list if desired -->
+                    <notebook>
+                        <page string="HAWBs">
+                            <field name="hawb_ids">
+                                <list editable="bottom">
+                                    <field name="consignee"/>
+                                    <field name="customer"/>
+                                    <field name="commodity"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <!-- Button to open HAWB popup -->
+                    <footer>
+                        <button name="action_open_hawb_form" string="Add HAWB" type="object" class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
         </field>
     </record>
 
@@ -24,10 +73,13 @@
     <record id="action_master_bl" model="ir.actions.act_window">
         <field name="name">Master Bill of Lading</field>
         <field name="res_model">air.import.master.bl</field>
-        <field name="view_mode">list</field>  <!-- Change 'tree' to 'list' -->
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_smiling_face">Create your first Master Bill of Lading</p>
             <p>Click to create a new Master Bill of Lading.</p>
         </field>
     </record>
+
+
+
 </odoo>

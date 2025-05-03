@@ -1,2 +1,1 @@
-from . import MasterBL
-from . import ForeignAgent
+from . import MasterBL, HAWB, ForeignAgent

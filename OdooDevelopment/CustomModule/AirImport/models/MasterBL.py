@@ -12,7 +12,9 @@ class MasterBL(models.Model):
     department = fields.Char(string='Department')
     pieces = fields.Integer(string='Total Pieces')
     weight = fields.Float(string='Total Weight (kg)')
-    pakages = fields.Float(string='Total number of packages')
+    packages = fields.Integer(string='Total number of packages')
+    origin = fields.Char(string='Origin')
+    hawb_ids = fields.One2many('air.import.hawb', 'master_bl_id', string='HAWBs')
     status = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed'),
@@ -31,3 +33,30 @@ class MasterBL(models.Model):
     def action_cancel(self):
         for record in self:
             record.status = 'cancelled'
+
+    def action_open_hawb_form(self):
+        return {
+            'name': 'Create HAWB',
+            'type': 'ir.actions.act_window',
+            'res_model': 'air.import.hawb',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+            'default_master_bl_id': self.id,
+            'default_origin': self.origin,
+            'default_packages': self.packages,
+            'default_weight': self.weight,
+            }
+        }
+
+    @api.model
+    def create(self, vals):
+        record = super().create(vals)
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create HAWB',
+            'res_model': 'air.import.hawb',
+            'view_mode': 'form',
+            'target': 'current',
+            'context': {'default_master_bl_id': record.id}
+        }

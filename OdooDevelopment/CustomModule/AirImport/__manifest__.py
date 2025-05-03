@@ -12,6 +12,8 @@
     'depends': [],
     'data': [
         'views/MasterBL.xml',
+        'views/hawb.xml',
+        'security/ir.model.access.csv',
         'views/ForeignAgent.xml',
         'views/menu.xml',
     ],
