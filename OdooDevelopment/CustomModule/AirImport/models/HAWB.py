@@ -13,12 +13,9 @@ class HAWB(models.Model):
     packages = fields.Integer(string='Packages', related='master_bl_id.packages', store=True)
     weight = fields.Float(string='Weight', related='master_bl_id.weight', store=True)
 
-    @api.model
-    def create(self, vals):
-        record = super().create(vals)
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'air.import.master.bl',
-            'view_mode': 'list',
-            'target': 'current',
-        }
+    def save_record(self):
+        # Add logic if needed, like validation
+        if not self.consignee or not self.customer:
+            raise ValidationError("Consignee and Customer must be filled.")
+        # Optionally return something or close the modal
+        return {'type': 'ir.actions.act_window_close'}

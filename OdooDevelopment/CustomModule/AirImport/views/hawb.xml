@@ -1,21 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="view_form_hawb" model="ir.ui.view">
         <field name="name">hawb.form</field>
         <field name="model">air.import.hawb</field>
         <field name="arch" type="xml">
             <form string="HAWB">
-                <group>
-                    <field name="master_bl_id" readonly="1"/>
-                    <field name="consignee"/>
-                    <field name="customer"/>
-                    <field name="commodity"/>
-                    <field name="origin" readonly="1"/>
-                    <field name="packages" readonly="1"/>
-                    <field name="weight" readonly="1"/>
-                </group>
+                <sheet>
+                    <group>
+                        <field name="master_bl_id" readonly="1"/>
+                        <field name="consignee"/>
+                        <field name="customer"/>
+                        <field name="commodity"/>
+                        <field name="origin" readonly="1"/>
+                        <field name="packages" readonly="1"/>
+                        <field name="weight" readonly="1"/>
+                    </group>
+                </sheet>
                 <footer>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button name="save_record" string="Save" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
                 </footer>
             </form>
         </field>

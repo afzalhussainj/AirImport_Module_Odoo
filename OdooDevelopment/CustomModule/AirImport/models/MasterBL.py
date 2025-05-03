@@ -1,5 +1,4 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
 
 class MasterBL(models.Model):
     _name = 'air.import.master.bl'
@@ -35,28 +34,17 @@ class MasterBL(models.Model):
             record.status = 'cancelled'
 
     def action_open_hawb_form(self):
+        self.ensure_one()
         return {
-            'name': 'Create HAWB',
             'type': 'ir.actions.act_window',
+            'name': 'Create HAWB',
             'res_model': 'air.import.hawb',
             'view_mode': 'form',
             'target': 'new',
             'context': {
-            'default_master_bl_id': self.id,
-            'default_origin': self.origin,
-            'default_packages': self.packages,
-            'default_weight': self.weight,
+                'default_master_bl_id': self.id,
+                'default_origin': self.origin,
+                'default_packages': self.packages,
+                'default_weight': self.weight,
             }
-        }
-
-    @api.model
-    def create(self, vals):
-        record = super().create(vals)
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Create HAWB',
-            'res_model': 'air.import.hawb',
-            'view_mode': 'form',
-            'target': 'current',
-            'context': {'default_master_bl_id': record.id}
         }
